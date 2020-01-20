@@ -75,7 +75,7 @@ def main():
 
         sentiment_chart_to_serve = alt.Chart(
             sentiments,
-            title='Bitcoin Sentiment'
+            title='bitcoin sentiment'
         ).mark_bar(size=50).encode(
             x=alt.X('counts', title = 'frequency', sort = None),
             y=alt.Y(
@@ -87,7 +87,7 @@ def main():
             tooltip=[
                 alt.Tooltip('counts', title='frequency'),
             ]
-        ).configure_mark(opacity=0.8).properties(width=700, height=500)
+        ).configure_mark(opacity=0.8).properties(width=700, height=400)
 
         sentiment_chart.altair_chart(sentiment_chart_to_serve)
 
@@ -96,18 +96,18 @@ def main():
 
         indicator_chart_to_serve = alt.Chart(
             historical_indicators,
-            title='Historical Indicator Values'
+            title='historical index values'
         ).mark_bar().encode(
-            x=alt.X('dates', title = 'dates'),
+            x=alt.X('dates', title = 'time'),
             y=alt.Y(
                 'values',
-                title = 'indicator values',
+                title = 'index value',
             ),
             color=alt.Color('values', title=None, scale=alt.Scale(scheme="brownbluegreen")),
             tooltip=[
-                alt.Tooltip('values', title='values'),
+                alt.Tooltip('values', title='index value'),
             ]
-        ).configure_mark(opacity=0.8).properties(width=700, height=500)
+        ).configure_mark(opacity=0.8).properties(width=700, height=400)
 
         indicator_chart.altair_chart(indicator_chart_to_serve)
 
