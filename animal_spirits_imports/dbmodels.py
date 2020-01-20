@@ -18,3 +18,13 @@ class Tweet(Base):
 
     def __repr__(self):
         return f'<tweet {self.text}>'
+
+class IndicatorRecord(Base):
+
+    __tablename__ = 'indicator_records'
+
+    time_generated = Column(DateTime, primary_key=True)
+    indicator_value = Column(Float, nullable=False)
+
+    def __repr__(self):
+        return f'<indicator {self.indicator_value}>'

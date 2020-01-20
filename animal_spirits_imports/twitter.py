@@ -19,6 +19,7 @@ Session = sessionmaker(bind=engine)
 
 # Create All Tables
 Tweet.metadata.create_all(engine)
+IndicatorRecord.metadata.create_all(engine)
 
 TWITTER_AUTH = tweepy.OAuthHandler(config('TWITTER_CONSUMER_KEY'),
                                    config('TWITTER_CONSUMER_SECRET'))
@@ -92,6 +93,48 @@ def delete_tweets():
     session.commit()
     session.close()
 
+def insert_indicator_record(value_to_insert, time_to_insert):
+    "add an indicator record to the database"
 
+    session = Session()
+
+
+    # pulling in a set of tweets based on the most recent tweet
+    try:
+        db_record = IndicatorRecord(
+            time_generated=time_to_insert,
+            indicator_value=value_to_insert)
+        session.add(db_record)
+
+    except Exception as e:
+        print(f'Error processing: {e}')
+        raise e
+
+    else:
+        session.commit()
+        session.close()
+
+def delete_indicator_records():
+    """deletes oldest tweets from database if nearing capacity."""
+
+    session = Session()
+
+    # get a count of tweets in the DB
+    recordcount = session.query(func.count(IndicatorRecord.time_generated)).scalar()
+    print(recordcount)
+
+    # if the number of tweets exceeds a threshold:
+    if recordcount >= 975:
+        # get the oldest records;
+        oldest_twentyfive = session.query(IndicatorRecord).order_by(IndicatorRecord.time_generated).limit(25)
+        # find the id of the newest among them;
+        last_entry = oldest_twentyfive[-1].time_generated
+        print(last_entry)
+        # and delete everything at or below that id.
+        to_delete = session.query(IndicatorRecord).filter(IndicatorRecord.time_generated <= last_entry)
+        to_delete.delete(synchronize_session=False)
+
+    session.commit()
+    session.close()
 
 
