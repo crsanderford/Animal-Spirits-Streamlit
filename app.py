@@ -115,6 +115,7 @@ def main():
             color=alt.Color('values', title=None, scale=alt.Scale(scheme="goldorange")),
             tooltip=[
                 alt.Tooltip('values', title='index value'),
+                alt.Tooltip('dates', title='time'),
             ]
         ).configure_mark(opacity=0.8).properties(width=700, height=400)
 
