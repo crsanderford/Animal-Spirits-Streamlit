@@ -30,7 +30,8 @@ def main():
                                             March 2018, during a period of decline. 1-grams that were predictive then 
                                             may be less so now.""")
 
-    explanation3 = st.sidebar.markdown(body="""more of my work located [here.](http://www.crsanderford.github.io)""")
+    explanation3 = st.sidebar.markdown(body="""more of my work located [here.](http://www.crsanderford.github.io)
+                                               read more about the model itself [here.](https://crsanderford.github.io/posts/2019/10/23/animal-spirits-post.html)""")
 
     sentiment_index = st.empty()
 
@@ -83,7 +84,7 @@ def main():
                 title = 'sentiment',
                 sort=['positive', 'neutral', 'negative']
             ),
-            color=alt.Color('counts', title=None, scale=alt.Scale(scheme="brownbluegreen")),
+            color=alt.Color('counts', title=None, scale=alt.Scale(scheme="goldorange")),
             tooltip=[
                 alt.Tooltip('counts', title='frequency'),
             ]
@@ -103,7 +104,7 @@ def main():
                 'values',
                 title = 'index value',
             ),
-            color=alt.Color('values', title=None, scale=alt.Scale(scheme="brownbluegreen")),
+            color=alt.Color('values', title=None, scale=alt.Scale(scheme="goldorange")),
             tooltip=[
                 alt.Tooltip('values', title='index value'),
             ]
