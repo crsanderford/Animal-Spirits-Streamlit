@@ -19,7 +19,15 @@ def main():
 
     st.title('Animal Spirits')
 
-    explanation = st.sidebar.markdown(body="""a *very* simple indicator for sentiment about bitcoin on Twitter.
+    
+
+    explanation = st.sidebar.markdown(body="""“Most, probably, of our decisions to do something positive, 
+                                               the full consequences of which will be drawn out over many days to come, 
+                                               can only be taken as the result of animal spirits – a spontaneous urge 
+                                               to action rather than inaction, and not as the outcome of a weighted 
+                                               average of quantitative benefits multiplied by quantitative probabilities.”""")
+
+    explanation1 = st.sidebar.markdown(body="""a *very* simple indicator for sentiment about bitcoin on Twitter.
                                             tweets are scored using sklearn's CountVectorizer and LinearSVC,
                                             limited to the 2000 most correlated 1-grams as determined by SelectKBest.
                                             the index is just an average of the sentiment scores stored in 
