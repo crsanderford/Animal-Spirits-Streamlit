@@ -43,7 +43,7 @@ def insert_tweets(quantity):
 
     # pulling in a set of tweets based on the most recent tweet
     try:
-        search_term = "#btc -filter:retweets"
+        search_term = "bitcoin -filter:retweets"
         tweets = tweepy.Cursor(API.search,
                     q=search_term,
                     tweet_mode='extended',

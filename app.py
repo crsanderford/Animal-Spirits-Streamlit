@@ -75,7 +75,7 @@ def main():
         
 
         # update the current sentiment indicator value
-        sentiment_index.text(f'Sentiment Index: {round(current_indicator, 2)}')
+        sentiment_index.text(f'sentiment index: {round(current_indicator, 2)}')
 
 
         # use the sentiments pulled from the DB to construct a dataframe and chart
