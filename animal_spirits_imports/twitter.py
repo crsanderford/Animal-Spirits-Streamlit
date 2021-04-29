@@ -14,6 +14,10 @@ import psycopg2
 
 # Create engine
 db_uri = config('DATABASE_URL')
+# heroku being silly re: postgres:// vs postgresql://
+if db_uri.startswith("postgres://"):     
+    db_uri = db_uri.replace("postgres://", "postgresql://", 1)
+
 engine = create_engine(db_uri, echo=True)
 Session = sessionmaker(bind=engine)
 
