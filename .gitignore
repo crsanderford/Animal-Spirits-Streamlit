@@ -131,4 +131,4 @@ dmypy.json
 *.sqlite
 *.sqlite3
 
-.vscode
+/.vscode
